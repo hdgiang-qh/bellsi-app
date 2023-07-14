@@ -9,17 +9,19 @@ class ShoppingScreen extends StatefulWidget {
 }
 
 class _ShoppingScreenState extends State<ShoppingScreen> {
-  ListTile _tile(
-    String title,
-    String subtitle,
-    IconData icon,
-  ) {
+  ListTile _tile(String title, String subtitle, IconData icon) {
     return ListTile(
       leading: Container(
         width: 60,
+        // height: 50,
         child: TextField(
-          decoration:
-              InputDecoration(border: OutlineInputBorder(), hintText: ''),
+          style: TextStyle(
+            fontSize: 16,
+          ),
+          decoration: InputDecoration(
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              hintText: ''),
         ),
       ),
       title: Text(title,
