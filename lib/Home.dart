@@ -51,10 +51,7 @@ class _HomePageState extends State<HomePage> {
         ],
         onTabChange: _onItemTapped,
         tabs: [
-          GButton(
-            icon: Icons.home,
-            text: 'Home',
-          ),
+          GButton(icon: Icons.home, text: 'Home'),
           GButton(icon: Icons.shopping_cart, text: 'Shopping'),
           GButton(icon: Icons.search, text: 'Search'),
           GButton(icon: Icons.account_circle, text: 'Account')

@@ -18,14 +18,6 @@ class _ListProductState extends State<ListProduct> {
     'Item3',
   ];
 
-  Widget buildItem1() {
-    return Container(
-      child: DropdownButtonHideUnderline(
-        child: Text('View'),
-      ),
-    );
-  }
-
   String? selectedValue;
   @override
   Widget build(BuildContext context) {
