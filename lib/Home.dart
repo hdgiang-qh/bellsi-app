@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     ShoppingScreen(),
     Search(),
     Account(),
-    ListProduct()
+    //  ListProduct()
   ];
 
   void _onItemTapped(int index) {
@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: GNav(
+        selectedIndex: _selectedIndex,
         iconSize: 22,
         haptic: true,
         backgroundColor: Colors.cyan,
@@ -43,7 +44,6 @@ class _HomePageState extends State<HomePage> {
         activeColor: Colors.cyanAccent,
         gap: 4,
         padding: EdgeInsets.all(16),
-        // tabActiveBorder: Border.all(color: Colors.black, width: 1),
         tabBorder: Border.all(color: Colors.blue, width: 1),
         curve: Curves.easeOutExpo,
         tabShadow: [

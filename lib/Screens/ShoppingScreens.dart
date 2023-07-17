@@ -29,9 +29,12 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
             fontWeight: FontWeight.w500,
             fontSize: 16,
           )),
-      subtitle: Text(subtitle),
-      trailing: Icon(
-        icon,
+      subtitle: Text(
+        subtitle,
+      ),
+      trailing: IconButton(
+        icon: Icon(icon),
+        onPressed: () {},
         color: Colors.red[500],
       ),
     );
@@ -46,52 +49,6 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
             Icons.restore_from_trash_sharp),
         _tile('Alamo Drafthouse Cinema', '2550 Mission St',
             Icons.restore_from_trash_sharp),
-      ],
-    );
-  }
-
-  Widget buildItem() {
-    return Column(
-      children: [
-        Container(
-          height: 60,
-          margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            children: [
-              Expanded(
-                  flex: 2,
-                  child: Container(
-                    margin: EdgeInsets.all(5),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(), hintText: '123'),
-                    ),
-                  )),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.symmetric(vertical: 7),
-                  child: Text(
-                    'Áo Chống Nắng',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                flex: 6,
-              ),
-              Icon(
-                Icons.restore_from_trash,
-                size: 30,
-                color: Colors.red,
-              )
-            ],
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-          ),
-        ),
-        Divider(
-          thickness: 1,
-        ),
       ],
     );
   }
