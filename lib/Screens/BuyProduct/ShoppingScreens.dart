@@ -1,5 +1,9 @@
-import 'package:bellsi_app/Product/ListProduct.dart';
+import 'package:bellsi_app/Home.dart';
+import 'package:bellsi_app/Screens/BuyProduct/ChoseProduct.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+
+import '../ProductScreen/ProductScreen.dart';
 
 class ShoppingScreen extends StatefulWidget {
   const ShoppingScreen({super.key});
@@ -9,6 +13,7 @@ class ShoppingScreen extends StatefulWidget {
 }
 
 class _ShoppingScreenState extends State<ShoppingScreen> {
+  // truong du lieu san pham
   ListTile _tile(String title, String subtitle, IconData icon) {
     return ListTile(
       leading: Container(
@@ -40,6 +45,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
     );
   }
 
+  // list san pham (fix)
   Widget buildList() {
     return ListView(
       children: [
@@ -53,6 +59,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
     );
   }
 
+// thong tin mua san pham
   Widget buildIfm() {
     return Container(
       height: 335,
@@ -167,6 +174,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
     );
   }
 
+// button dat hang
   Widget buildCost() {
     return Container(
         child: Column(
@@ -217,6 +225,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
             Container(
               child: Column(
                 children: [
+                  // button chose
                   Container(
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.symmetric(horizontal: 15),
@@ -225,7 +234,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ListProduct()));
+                                  builder: (context) => ChoseProduct()));
                         },
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(
@@ -233,6 +242,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                                     borderRadius: BorderRadius.circular(20)))),
                         child: Text('Choses Pruduct')),
                   ),
+                  //
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5),
                     margin: EdgeInsets.symmetric(horizontal: 5),
@@ -241,6 +251,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                     ),
                     child: Column(
                       children: [
+                        // list product chose
                         Container(
                             height: 160,
                             margin: EdgeInsets.symmetric(horizontal: 5),
@@ -255,6 +266,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                           indent: 5,
                           endIndent: 5,
                         ),
+                        // chi tiet gia
                         Container(
                             height: 430,
                             margin: EdgeInsets.symmetric(horizontal: 5),

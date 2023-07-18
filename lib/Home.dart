@@ -1,8 +1,8 @@
-import 'package:bellsi_app/Product/ListProduct.dart';
+import 'package:bellsi_app/Screens/BuyProduct/ChoseProduct.dart';
 import 'package:bellsi_app/Screens/AccountScreen.dart';
-import 'package:bellsi_app/Screens/HomeScreen.dart';
-import 'package:bellsi_app/Screens/SearchScreen.dart';
-import 'package:bellsi_app/Screens/ShoppingScreens.dart';
+import 'package:bellsi_app/Screens/HomeScreen/HomeScreen.dart';
+import 'package:bellsi_app/Screens/ProductScreen/ProductScreen.dart';
+import 'package:bellsi_app/Screens/BuyProduct/ShoppingScreens.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -18,9 +18,9 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     ShoppingScreen(),
-    Search(),
+    Product(),
     Account(),
-    //  ListProduct()
+    //  ChoseProduct()
   ];
 
   void _onItemTapped(int index) {
@@ -37,11 +37,11 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: GNav(
         selectedIndex: _selectedIndex,
-        iconSize: 22,
+        iconSize: 20,
         haptic: true,
         backgroundColor: Colors.cyan,
         color: Colors.white,
-        activeColor: Colors.cyanAccent,
+        activeColor: Colors.white,
         gap: 4,
         padding: EdgeInsets.all(16),
         tabBorder: Border.all(color: Colors.blue, width: 1),
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         tabs: [
           GButton(icon: Icons.home, text: 'Home'),
           GButton(icon: Icons.shopping_cart, text: 'Shopping'),
-          GButton(icon: Icons.search, text: 'Search'),
+          GButton(icon: Icons.inventory, text: 'Product'),
           GButton(icon: Icons.account_circle, text: 'Account')
         ],
       ),

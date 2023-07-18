@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'ChartLine.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -33,6 +35,34 @@ class _HomeScreenState extends State<HomeScreen> {
         _tile('Áo Chống Nắng', '5,000 ', '1'),
         _tile('Sữa Rửa Mặt Than Tre', '4,000 ', '2'),
       ],
+    );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('AlertDialog Title'),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Bùng nổ doanh số '),
+                Text('❌ DEAL HOT -BÒ AUKOBE CẮT SALE ĐẬM ❌'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -455,10 +485,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text('Tháng bùng \nnổ doanh số',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16))
+                                          ElevatedButton(
+                                            onPressed: _showMyDialog,
+                                            child: Text(
+                                                'Tháng bùng \nnổ doanh số',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                    color: Colors.black)),
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStatePropertyAll<
+                                                      Color>(Colors.white),
+                                            ),
+                                          )
                                         ],
                                       ),
                                     ),
@@ -476,10 +516,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   margin: EdgeInsets.all(10),
                   color: Colors.white,
-                  height: 400,
+                  height: 300,
                   width: double.infinity,
                   alignment: Alignment.center,
-                  child: Text('Area Chart'),
+                  child: LineChartSample2(),
                 ),
                 //top doanh thu
                 Container(
