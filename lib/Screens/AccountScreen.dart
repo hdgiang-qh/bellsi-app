@@ -41,36 +41,37 @@ class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Account Screen'),
-      ),
-      body: GridView.builder(
-          padding: const EdgeInsets.all(10),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-              childAspectRatio: 2 / 3,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20),
-          itemCount: _products.length,
-          itemBuilder: (BuildContext ctx, index) {
-            return GridTile(
-              key: ValueKey(_products[index]['id']),
-              footer: GridTileBar(
-                backgroundColor: Colors.black54,
-                title: Text(
-                  _products[index]['name'],
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text("\$${_products[index]['price'].toString()}"),
-                trailing: const Icon(Icons.shopping_cart),
-              ),
-              child: Image.network(
-                'https://www.kindacode.com/wp-content/uploads/2021/12/phone.jpeg',
-                fit: BoxFit.cover,
-              ),
-            );
-          }),
-    );
+        appBar: AppBar(
+          title: Text('Account Screen'),
+        ),
+        body: Container()
+        // GridView.builder(
+        //     padding: const EdgeInsets.all(10),
+        //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        //         maxCrossAxisExtent: 200,
+        //         childAspectRatio: 2 / 3,
+        //         crossAxisSpacing: 20,
+        //         mainAxisSpacing: 20),
+        //     itemCount: _products.length,
+        //     itemBuilder: (BuildContext ctx, index) {
+        //       return GridTile(
+        //         key: ValueKey(_products[index]['id']),
+        //         footer: GridTileBar(
+        //           backgroundColor: Colors.black54,
+        //           title: Text(
+        //             _products[index]['name'],
+        //             style: const TextStyle(
+        //                 fontSize: 18, fontWeight: FontWeight.bold),
+        //           ),
+        //           subtitle: Text("\$${_products[index]['price'].toString()}"),
+        //           trailing: const Icon(Icons.shopping_cart),
+        //         ),
+        //         child: Image.network(
+        //           'https://www.kindacode.com/wp-content/uploads/2021/12/phone.jpeg',
+        //           fit: BoxFit.cover,
+        //         ),
+        //       );
+        //     }),
+        );
   }
 }

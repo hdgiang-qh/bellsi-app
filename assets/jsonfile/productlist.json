@@ -1,0 +1,21 @@
+[
+  {
+    "id": 0,
+    "name": "Áo Chống Năng",
+    "category": "Fashion",
+    "imageUrl": "https://toplist.vn/images/800px/ao-chong-nang-humbgo-1048671.jpg",
+    "oldPrice": "1899",
+    "price": "150000",
+    "brand": "Uniqlo"
+  },
+  {
+    "id": 1,
+    "name": "Sữa Rửa Mặt Than Tre",
+    "category": "Mỹ Phầm",
+    "oldPrice": "999",
+    "imageUrl": "https://vienthammylavender.vn/wp-content/uploads/2021/08/sua-rua-mat-than-tre-hoat-tinh-zenpali-1.jpg",
+    "price": "100000",
+    "brand": "Hasaki"
+  }
+
+]

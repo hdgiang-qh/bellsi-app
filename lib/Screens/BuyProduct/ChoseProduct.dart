@@ -154,19 +154,30 @@ class _ChoseProductState extends State<ChoseProduct> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(left: 10),
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50)),
-                              backgroundColor: Color.fromARGB(255, 0, 137, 209),
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context, true);
-                            },
-                            child: Text(
-                              'X',
-                              style: TextStyle(fontSize: 20),
-                            )),
+                        child: Row(
+                          children: [
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50)),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 0, 137, 209),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context, true);
+                                },
+                                child: Text(
+                                  'X',
+                                  style: TextStyle(fontSize: 20),
+                                )),
+                            Container(
+                              margin: EdgeInsets.only(left: 15),
+                              child: Text(
+                                'Chọn Mua Sản Phẩm',
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
