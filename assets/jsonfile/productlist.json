@@ -1,21 +1,36 @@
 [
   {
-    "id": 0,
+    "id": 1,
+    "sum": 5000,
     "name": "Áo Chống Năng",
+    "subname": "",
     "category": "Fashion",
     "imageUrl": "https://toplist.vn/images/800px/ao-chong-nang-humbgo-1048671.jpg",
     "oldPrice": "1899",
-    "price": "150000",
+    "price": "150.000",
     "brand": "Uniqlo"
   },
   {
-    "id": 1,
+    "id": 2,
+    "sum" : 4000,
     "name": "Sữa Rửa Mặt Than Tre",
+    "subname": "",
     "category": "Mỹ Phầm",
     "oldPrice": "999",
     "imageUrl": "https://vienthammylavender.vn/wp-content/uploads/2021/08/sua-rua-mat-than-tre-hoat-tinh-zenpali-1.jpg",
-    "price": "100000",
+    "price": "100.000",
     "brand": "Hasaki"
+  },
+  {
+    "id": 3,
+    "sum" : 3000,
+    "name": "Tivi Sony 4K 43 inch KD-43X80L VN3",
+    "subname" :"",
+    "category": "Điện Tử",
+    "oldPrice": "999",
+    "imageUrl": "https://cdn.nguyenkimmall.com/images/thumbnails/600/336/detailed/870/10055295-google-tivi-sony-4k-43-inch-kd-43x80l-vn3-1.jpg",
+    "price": "15.000.000",
+    "brand": "Sony"
   }
 
 ]

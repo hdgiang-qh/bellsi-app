@@ -1,9 +1,5 @@
-import 'package:bellsi_app/Home.dart';
 import 'package:bellsi_app/Screens/BuyProduct/ChoseProduct.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-
-import '../ProductScreen/ProductScreen.dart';
 
 class ShoppingScreen extends StatefulWidget {
   const ShoppingScreen({super.key});

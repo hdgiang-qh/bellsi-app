@@ -44,7 +44,22 @@ class _AccountState extends State<Account> {
         appBar: AppBar(
           title: Text('Account Screen'),
         ),
-        body: Container()
+        body: Container(
+          child: Column(
+            children: [
+              Container(
+                height: 50,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Đơn Hàng Của Tôi',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
         // GridView.builder(
         //     padding: const EdgeInsets.all(10),
         //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

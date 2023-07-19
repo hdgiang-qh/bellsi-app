@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' as rootBundle;
+
+import '../ProductScreen/ProductDataModel.dart';
 import 'ChartLine.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,12 +34,72 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildList() {
-    return ListView(
-      children: [
-        _tile('Áo Chống Nắng', '5,000 ', '1'),
-        _tile('Sữa Rửa Mặt Than Tre', '4,000 ', '2'),
-      ],
+    return FutureBuilder(
+      future: ReadJsonData(),
+      builder: (context, data) {
+        if (data.hasError) {
+          return Center(child: Text("Đang Cập Nhật"));
+        } else if (data.hasData) {
+          var items = data.data as List<ProductDataModel>;
+          return ListView.builder(
+              itemCount: items == null ? 0 : items.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  elevation: 5,
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                            alignment: Alignment.center,
+                            color: Colors.blue[100],
+                            width: 50,
+                            height: 50,
+                            child: Text(items[index].id.toString())),
+                        Expanded(
+                            child: Container(
+                          padding: EdgeInsets.only(bottom: 8),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(left: 8, right: 8),
+                                  child: Text(
+                                    items[index].name.toString(),
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(left: 8, right: 8),
+                                    child: Text(items[index].sum.toString()))
+                              ]),
+                        ))
+                      ],
+                    ),
+                  ),
+                );
+              });
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
+  }
+
+  Future<List<ProductDataModel>> ReadJsonData() async {
+    final jsondata = await rootBundle.rootBundle
+        .loadString('assets/jsonfile/productlist.json');
+    final list = json.decode(jsondata) as List<dynamic>;
+
+    return list.map((e) => ProductDataModel.fromJson(e)).toList();
   }
 
   Future<void> _showMyDialog() async {

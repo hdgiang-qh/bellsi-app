@@ -1,4 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/services.dart' as rootBundle;
+
+import '../ProductScreen/ProductDataModel.dart';
 import 'SelectedFilter.dart';
 import 'package:flutter/material.dart';
 import 'package:filter_list/filter_list.dart';
@@ -91,29 +95,115 @@ class _ChoseProductState extends State<ChoseProduct> {
     );
   }
 
+  Future<List<ProductDataModel>> ReadJsonData() async {
+    final jsondata = await rootBundle.rootBundle
+        .loadString('assets/jsonfile/productlist.json');
+    final list = json.decode(jsondata) as List<dynamic>;
+
+    return list.map((e) => ProductDataModel.fromJson(e)).toList();
+  }
+
   Widget buildList() {
-    return GridView(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.9,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10),
-      children: [
-        _tile(
-            'Áo Chống Nắng',
-            '100,000',
-            Image.asset(
-              'assets/images/pic1.jpg',
-              //  fit: BoxFit.cover,
-            )),
-        _tile('Sữa Rửa Mặt Than Tre', '150,000',
-            Image.asset('assets/images/pic2.jpg')),
-        _tile('TV Sony', '15,000,000', Image.asset('assets/images/pic3.jpg')),
-        _tile('Sữa Rửa Mặt Than Tre', '150,000',
-            Image.asset('assets/images/pic2.jpg')),
-        _tile('Sữa Rửa Mặt Than Tre', '150,000',
-            Image.asset('assets/images/pic2.jpg')),
-      ],
+    return FutureBuilder(
+      future: ReadJsonData(),
+      builder: (context, data) {
+        if (data.hasError) {
+          return Center(child: Text("Hiện Chưa Có Sản Phẩm"));
+        } else if (data.hasData) {
+          var items = data.data as List<ProductDataModel>;
+          return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10),
+              itemCount: items == null ? 0 : items.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  elevation: 5,
+                  //  margin: EdgeInsets.symmetric(vertical: 6),
+                  child: Container(
+                    padding: EdgeInsets.only(top: 8),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 170,
+                          height: 140,
+                          child: Image(
+                            image:
+                                NetworkImage(items[index].imageURL.toString()),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        Expanded(
+                            child: Container(
+                          padding: EdgeInsets.only(bottom: 8),
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.e,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 8, right: 8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      height: 40,
+                                      child: Text(
+                                        items[index].name.toString(),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(top: 5, left: 8, right: 8),
+                                child: Row(
+                                  children: [
+                                    Text('Giá: '),
+                                    Text(
+                                      items[index].price.toString(),
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.only(left: 8, right: 8),
+                                  child: Container(
+                                      width: double.infinity,
+                                      height: 25,
+                                      margin: EdgeInsets.only(top: 5),
+                                      child: ElevatedButton(
+                                          onPressed: () {},
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                  Icons.shopping_cart_outlined),
+                                              Text('Thêm Vào Giỏ'),
+                                            ],
+                                          ))))
+                            ],
+                          ),
+                        ))
+                      ],
+                    ),
+                  ),
+                );
+              });
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 
