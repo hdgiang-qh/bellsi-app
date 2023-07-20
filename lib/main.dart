@@ -1,4 +1,5 @@
 import 'package:bellsi_app/Home.dart';
+import 'package:bellsi_app/Screens/Login/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const LoginScreen(),
     );
   }
 }

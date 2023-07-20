@@ -212,6 +212,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Lựa chọn và Thanh Toán'),
       ),
       body: Container(

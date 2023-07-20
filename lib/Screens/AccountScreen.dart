@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bellsi_app/Screens/Login/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
 class Account extends StatefulWidget {
@@ -42,13 +43,16 @@ class _AccountState extends State<Account> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text('Account Screen'),
         ),
-        body: Container(
+        body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 height: 50,
+                width: double.infinity,
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
@@ -56,6 +60,25 @@ class _AccountState extends State<Account> {
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
+                  child: Text(
+                    'Đăng Xuất',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                child: Text('Thông Tin Tài Khoản'),
               )
             ],
           ),

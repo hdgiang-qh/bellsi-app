@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' as rootBundle;
@@ -134,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Home Screen'),
       ),
       body: ListView(
@@ -555,7 +557,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 'Tháng bùng \nnổ doanh số',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
-                                                    fontSize: 16,
+                                                    fontSize: 14,
                                                     color: Colors.black)),
                                             style: ButtonStyle(
                                               backgroundColor:

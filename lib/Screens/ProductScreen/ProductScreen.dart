@@ -55,6 +55,7 @@ class _ProductState extends State<Product> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text('Các Sản Phẩm Hiện Có'),
         ),
         body: SafeArea(

@@ -114,7 +114,7 @@ class _ChoseProductState extends State<ChoseProduct> {
           return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.8,
+                  childAspectRatio: 0.75,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10),
               itemCount: items == null ? 0 : items.length,
@@ -125,74 +125,77 @@ class _ChoseProductState extends State<ChoseProduct> {
                   child: Container(
                     padding: EdgeInsets.only(top: 8),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: 170,
-                          height: 140,
-                          child: Image(
-                            image:
-                                NetworkImage(items[index].imageURL.toString()),
-                            fit: BoxFit.fill,
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            height: 140,
+                            child: Image(
+                              image: NetworkImage(
+                                  items[index].imageURL.toString()),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         Expanded(
+                            flex: 1,
                             child: Container(
-                          padding: EdgeInsets.only(bottom: 8),
-                          child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.e,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 8, right: 8),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      height: 40,
-                                      child: Text(
-                                        items[index].name.toString(),
-                                        style: TextStyle(
-                                          fontSize: 16,
+                              padding: EdgeInsets.only(bottom: 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 8, right: 8),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            items[index].name.toString(),
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(top: 5, left: 8, right: 8),
-                                child: Row(
-                                  children: [
-                                    Text('Giá: '),
-                                    Text(
-                                      items[index].price.toString(),
-                                      style: TextStyle(color: Colors.red),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 5, left: 8, right: 8, bottom: 5),
+                                    child: Row(
+                                      children: [
+                                        Text('Giá: '),
+                                        Text(
+                                          items[index].price.toString(),
+                                          style: TextStyle(color: Colors.red),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 8, right: 8),
+                                      child: Container(
+                                          width: double.infinity,
+                                          height: 23,
+                                          margin: EdgeInsets.only(top: 5),
+                                          child: ElevatedButton(
+                                              onPressed: () {},
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons
+                                                      .shopping_cart_outlined),
+                                                  Text('Thêm Vào Giỏ'),
+                                                ],
+                                              ))))
+                                ],
                               ),
-                              Padding(
-                                  padding: EdgeInsets.only(left: 8, right: 8),
-                                  child: Container(
-                                      width: double.infinity,
-                                      height: 25,
-                                      margin: EdgeInsets.only(top: 5),
-                                      child: ElevatedButton(
-                                          onPressed: () {},
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                  Icons.shopping_cart_outlined),
-                                              Text('Thêm Vào Giỏ'),
-                                            ],
-                                          ))))
-                            ],
-                          ),
-                        ))
+                            ))
                       ],
                     ),
                   ),
